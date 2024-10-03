@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Poema</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffccff; /* Fondo rosa claro */
+            text-align: center;
+            padding: 50px;
+        }
+        #carta {
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: #fff;
+            margin: 20px auto;
+            width: 300px;
+            border-radius: 10px;
+        }
+        #poema {
+            margin-top: 20px;
+            font-size: 18px;
+            color: pink; /* Color del texto del poema en rosa */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>te lo dedico ati </h1>
+    
+    <div id="carta">
+        <h2>Mi Carta</h2>
+        <p>Haz clic en el botón para leer el poema.</p>
+        <button id="mostrarPoema">Leer Poema</button>
+        <div id="poema"></div>
+    </div>
+
+    <!-- Etiqueta de audio para reproducir música -->
+    <audio id="musica" src="Bruno Mars - Locked Out Of Heaven (Official Music Video).mp3" loop></audio> <!-- Cambia 'musica.mp3' por el nombre de tu archivo de audio -->
+
+    <script>
+        const mostrarPoema = document.getElementById('mostrarPoema');
+        const poemaDiv = document.getElementById('poema');
+        const musica = document.getElementById('musica');
+
+        mostrarPoema.addEventListener('click', () => {
+            // Evitar que se ejecute varias veces
+            mostrarPoema.disabled = true;
+            musica.play(); // Reproduce la música al hacer clic en "Leer Poema"
+
+            const poema = [
+                "Bajo el mismo cielo estrellado,",
+                "nuestros sueños flotan,",
+                "como cometas en la brisa,",
+                "tejiendo historias en cada nota.",
+                "Tus ojos son faros,",
+                "que iluminan mi destino,",
+                "cada mirada tuya,",
+                "un viaje hacia lo divino.",
+                "Nuestras manos entrelazadas,",
+                "como raíces en la tierra,",
+                "nutriendo el amor que crece,",
+                "con la fuerza que no se cierra.",
+                "En el susurro del viento,",
+                "escucho tu voz,",
+                "cada palabra es un verso,",
+                "cada abrazo, mi adiós.",
+                "Así caminamos juntos,",
+                "por senderos de luz y sombra,",
+                "en cada paso, un latido,",
+                "en cada beso, la historia que asombra."
+            ];
+
+            poemaDiv.innerHTML = ''; // Limpiar el poema anterior
+            let i = 0;
+
+            const interval = setInterval(() => {
+                if (i < poema.length) {
+                    poemaDiv.innerHTML += poema[i] + '<br>';
+                    i++;
+                } else {
+                    clearInterval(interval);
+                    mostrarPoema.disabled = false; // Habilitar el botón nuevamente
+                }
+            }, 2000); // Cambiar cada 2 segundos
+        });
+    </script>
+
+</body>
+</html>
